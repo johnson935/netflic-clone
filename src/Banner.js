@@ -1,6 +1,22 @@
-import React from 'react'
+import axios from './axios.js';
+import React, {useState, useEffect} from 'react'
 import "./Banner.css"
+import requests from './Requests.js'
 function Banner() {
+    const [movie, setMovie] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            const request = await axios.get(requests.fetchNetflixOriginals);
+            setMovie(
+                request.data.results[
+                    Math.floor(Math.random() * request.data?.results.length -1)
+                ]
+            )
+            return request;
+        }
+        fetchData();
+    }, [])
+
     function truncate(string, n)
     {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string;
@@ -9,17 +25,19 @@ function Banner() {
     return (
         <header className="banner" style={{
             backgroundSize: "cover",
-            backgroundImage: `url("https://lanetaneta.com/wp-content/uploads/2021/06/Los-programas-y-peliculas-mas-importantes-de-Netflix-en-2021.jpg")`,
+            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
             backgroundPosition: "center center"
         }}>
             <div className="banner__contents">
-                <h1 className="banner__title">Movie Name</h1>
+                <h1 className="banner__title">
+                    {movie?.title || movie?.name || movie?.original_name}
+                </h1>
                 <div className="banner__buttons">
                     <button className="banner__button">Play</button>                   
                     <button className="banner__button">My List</button>
                 </div>
                 <div className="banner__description">
-                    {truncate("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 150)}
+                    {truncate(movie?.overview, 150)}
                 </div>
             </div>
             <div className="banner__fadeButton">
