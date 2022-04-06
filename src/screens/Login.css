@@ -1,0 +1,74 @@
+.login{
+    position: relative;
+    height: 100%;
+    background: url("https://i0.wp.com/hipertextual.com/wp-content/uploads/2019/11/hipertextual-si-te-vas-netflix-no-olvides-descargar-mi-actividad-mi-lista-2019814675.jpg?fit=1500%2C1000&ssl=1") center no-repeat;
+    background-size: cover;
+}
+
+.login__logo{
+    position: fixed;
+    left: 0;
+    width: 150px;
+    object-fit: contain;
+    padding-left: 20px;
+}
+
+.login__button{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e50914;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.login__gradient{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+.login__body{
+    position: absolute;
+    top: 30%;
+    margin-left: 18%;
+    margin-right: auto;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    left: 0;
+    right: 15%;
+}
+
+.login__input > form > input{
+    padding: 10px;
+    outline-width: 0;
+    height: 30px;
+    width: 30%;
+    border:none;
+    max-width: 600px;
+}
+
+.login__getStarted{
+    padding: 16px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e50914;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login__input{
+    margin: 20px;
+}
